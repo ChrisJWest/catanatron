@@ -1,4 +1,8 @@
-from typing import Any, List, Literal, Tuple
+from typing import Any, List, Tuple
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 import functools
 from collections import Counter
 from catanatron.models.decks import freqdeck_count
