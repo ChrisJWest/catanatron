@@ -1,7 +1,11 @@
 import os
 import importlib.util
 from dataclasses import dataclass
-from typing import Literal, Union
+from typing import Union
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 
 import click
 from rich.console import Console
