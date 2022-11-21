@@ -3,7 +3,11 @@ from dataclasses import dataclass
 import random
 from enum import Enum
 from collections import Counter, defaultdict
-from typing import Dict, FrozenSet, List, Literal, Mapping, Set, Tuple, Type, Union
+from typing import Dict, FrozenSet, List, Mapping, Set, Tuple, Type, Union
+try:
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
 
 from catanatron.models.coordinate_system import Direction, add, UNIT_VECTORS
 from catanatron.models.enums import (
