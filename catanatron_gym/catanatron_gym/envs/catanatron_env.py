@@ -147,6 +147,10 @@ class CatanatronEnv(gym.Env):
         self.features = get_feature_ordering(len(self.players), self.map_type)
         self.invalid_actions_count = 0
         self.max_invalid_actions = 10
+        self.done = 0
+        self.winner = None
+        
+        
 
         # TODO: Make self.action_space smaller if possible (per map_type)
         # self.action_space = spaces.Discrete(ACTION_SPACE_SIZE)
@@ -207,6 +211,9 @@ class CatanatronEnv(gym.Env):
         winning_color = self.game.winning_color()
         done = winning_color is not None
         reward = self.reward_function(self.game, self.p0.color)
+        if done:
+          self.done = done
+          self.winner = winning_color
 
         return observation, reward, done, info
 
