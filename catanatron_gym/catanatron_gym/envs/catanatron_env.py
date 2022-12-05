@@ -225,6 +225,8 @@ class CatanatronEnv(gym.Env):
             players=self.players, catan_map=catan_map, vps_to_win=self.vps_to_win
         )
         self.invalid_actions_count = 0
+        self.done = 0
+        self.winner = None
 
         self._advance_until_p0_decision()
 
