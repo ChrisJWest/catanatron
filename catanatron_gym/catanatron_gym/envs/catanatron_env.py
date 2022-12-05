@@ -149,6 +149,7 @@ class CatanatronEnv(gym.Env):
         self.max_invalid_actions = 10
         self.done = 0
         self.winner = None
+        self.currentStep = 0
         
         
 
@@ -214,6 +215,7 @@ class CatanatronEnv(gym.Env):
         if done:
           self.done = done
           self.winner = winning_color
+        self.currentStep += 1
 
         return observation, reward, done, info
 
@@ -225,8 +227,7 @@ class CatanatronEnv(gym.Env):
             players=self.players, catan_map=catan_map, vps_to_win=self.vps_to_win
         )
         self.invalid_actions_count = 0
-        self.done = 0
-        self.winner = None
+        self.currentStep = 0
 
         self._advance_until_p0_decision()
 
